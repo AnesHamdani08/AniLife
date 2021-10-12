@@ -38,4 +38,35 @@ The app's design is similar to AniList
 ![Search Related & Similar](Screenshots/Search_RelatedSimilar.png)
 ![Search Items](Screenshots/SearchItems.png)
 # 🧰Functionality
- - TBC
+## AniCache
+Provides a local caching for offline data access and to avoid API request flooding
+## AniLibrary
+Provides a local library of animes categorized by: None, Watching, Completed, Paused, Dropped, Planning
+## AniResolver
+Provides connection to internal resources: Localization and Styles
+## AniUIKit
+Provides the UI controls for AniLife
+## AniDB
+Provides a wrapper for AniDB HTTP API
+## Core Functionality
+ - Easy Access and Manage to Current Watching Animes
+ - Easy Access to Your Recent Activity
+ - Explore Your Collection
+ - See Trending Animes
+ - Get Recommendations
+ - Browse Your Local Cache
+ - Browse Your Local Anime Library
+ - Filter Unwanted Content
+ - Optimize Memory Usage for Low Resources
+ - Manage Your Cache
+ - Search for Anime Easily
+ - Listen to Your Favourite Anime OSTs
+ - Get All Information Related to a Apecific Anime
+ - Batch Update Your Local Cache
+ - Multi Themes Support
+ - Multi Language Support
+ - Clean and Responsive UI
+# Feedback
+You're more than welcome to report your feedback or issues with the app in the repository
+# Thank You For Trying AniLife 🎌
+Release version will be available in the release section as soon as possible.
