@@ -66,6 +66,11 @@ Provides a wrapper for AniDB HTTP API
  - Multi Themes Support
  - Multi Language Support
  - Clean and Responsive UI
+# Release Table
+ Version | Date | Note 
+ --------|------|-----
+ v0.0.0.1-beta|14/10/21|N/A
+ 
 # Feedback
 You're more than welcome to report your feedback or issues with the app in the repository
 # Thank You For Trying AniLife 🎌
