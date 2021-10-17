@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AniLife>
   <Featured>
+    <Anime>16265</Anime>
     <Anime>15735</Anime>
     <Anime>16132</Anime>
     <Anime>15421</Anime>
   </Featured>
   <Waifu>
+    <Character Target="118158">78943</Character>
     <Character Target="11370">78943</Character>
     <Character Target="11370">78950</Character>
     <Character Target="11261">78018</Character>
@@ -13,9 +15,14 @@
     <Character Target="13246">97221</Character>
     <Character Target="8692">37272</Character>    
   </Waifu>
-  <OST>
-    <Ost Thumb="https://cdn.discordapp.com/attachments/898979519459893260/898980575543722014/AshitaWoNarase.jpg" Source="0" Title="Ashita Wo Narase" Artist="シシド・カフカ" Anime="Fairy Tail" Aid="13295">https://cdn.discordapp.com/attachments/898979519459893260/898980324409761792/Fairy_Tail_Opening_22_full_NOT_EXTENDED.mp3</Ost>
-    <Ost Thumb="https://cdn.discordapp.com/attachments/898979519459893260/898980626621956197/InnocentSorrow.png" Source="0" Title="Innocent Sorrow" Artist="Abingdon Boys School" Anime="D.Gray-Man" Aid="4549">https://cdn.discordapp.com/attachments/898979519459893260/898980326666301510/YumeOST__abingdon_boys_school_-_INNOCENT_SORROW.mp3</Ost>
-    <Ost Thumb="https://cdn.discordapp.com/attachments/898979519459893260/898980575849885767/HackingToTheGate.jpg" Source="0" Title="Hacking To The Gate" Artist="Kanako Ito" Anime="Steins;Gate" Aid="7729">https://cdn.discordapp.com/attachments/898979519459893260/898980367258767410/SteinsGate_Opening_Theme_-_Hacking_to_the_Gate_Full_Version.mp3</Ost>                                                                        
+  <OST>        
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BANG!!!.jpg" Source="0" Title="BANG!!!" Artist="EGOIST" Anime="Build Divide: Code Black" Aid="16265">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BANG!!!.mp3</Ost>   
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BlackCatcher.jpg" Source="0" Title="Black Catcher" Artist="Vice Blanka" Anime="Black Clover" Aid="12665">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BlackCatcher.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BraveShine.jpg" Source="0" Title="Brave Shine" Artist="Aimer" Anime="Fate/Stay Night: Unlimited Blade Works" Aid="10760">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BraveShine.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/CrossingField.jpg" Source="0" Title="Crossing Field" Artist="LiSA" Anime="Sword Art Online" Aid="8692">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/CrossingField.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/KoiNoUta.jpg" Source="0" Title="Koi No Uta" Artist="Yunomi" Anime="Tonikaku Kawaii" Aid="15421">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/KoinoUta.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/LikeFlames.jpg" Source="0" Title="Like Flames" Artist="Minda Ryn" Anime="Tensei Shitara Slime Datta Ken (2021)" Aid="14767">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/LikeFlames.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/FateSong.jpg" Source="0" Title="To The Beggining" Artist="Kalafina" Anime="Fate/Zero" Aid="8160">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/ToTheBeggining.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/FateSong.jpg" Source="0" Title="Oath Sign" Artist="LiSA" Anime="Fate/Zero" Aid="8160">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/OathSign.mp3</Ost>
   </OST>
 </AniLife>
