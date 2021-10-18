@@ -69,7 +69,8 @@ Provides a wrapper for AniDB HTTP API
 # Release Table
  Version | Date | Note 
  --------|------|-----
- v0.0.0.1-beta|14/10/21|N/A
+ v0.0.0.1-beta.1|14/10/21|N/A
+ v0.0.0.2-beta.2|16/10/21|N/A
  
 # Feedback
 You're more than welcome to report your feedback or issues with the app in the repository
