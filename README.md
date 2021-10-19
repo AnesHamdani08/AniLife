@@ -74,5 +74,7 @@ Provides a wrapper for AniDB HTTP API
  
 # Feedback
 You're more than welcome to report your feedback or issues with the app in the repository
+# Source Code
+Source code will be published when the first stable releases
 # Thank You For Trying AniLife 🎌
 Release version will be available in the release section as soon as possible.
