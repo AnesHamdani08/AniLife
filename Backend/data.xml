@@ -7,13 +7,13 @@
     <Anime>15421</Anime>
   </Featured>
   <Waifu>
-    <Character Target="16168">118158</Character>
-    <Character Target="11370">78943</Character>
-    <Character Target="11370">78950</Character>
-    <Character Target="11261">78018</Character>
-    <Character Target="8660">36757</Character>
-    <Character Target="13246">97221</Character>
-    <Character Target="8692">37272</Character>    
+    <Character Thumb="https://cdn.myanimelist.net/r/360x360/images/characters/7/454360.jpg?s=40117973559df0726f556e1d0c2c3690" Target="16168">118158</Character>
+    <Character Thumb="https://cdn.myanimelist.net/images/characters/10/268173.jpg" Target="11370">78943</Character>
+    <Character Thumb="https://cdn.myanimelist.net/images/characters/16/306391.jpg" Target="11370">78950</Character>
+    <Character Thumb="https://cdn.myanimelist.net/r/360x360/images/characters/14/349249.jpg?s=836a64e8dcdce8c390ff608f50f43ef4" Target="11261">78018</Character>
+    <Character Thumb="https://cdn.myanimelist.net/images/characters/5/150011.jpg" Target="8660">36757</Character>
+    <Character Thumb="https://cdn.myanimelist.net/r/360x360/images/characters/6/374252.jpg?s=2658306489bac487e7b7900c4168eb33" Target="13246">97221</Character>
+    <Character Thumb="https://cdn.myanimelist.net/images/characters/15/262053.jpg" Target="8692">37272</Character>    
   </Waifu>
   <OST>        
     <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BANG!!!.jpg" Source="0" Title="BANG!!!" Artist="EGOIST" Anime="Build Divide: Code Black" Aid="16265">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/BANG!!!.mp3</Ost>   
