@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="EpisodeElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="400" Background="{DynamicResource BG}" Foreground="{DynamicResource TEXT}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1">
+    <Grid>
+        <Image x:Name="Episode_Cover" Source="{DynamicResource WARNING}" Width="150" HorizontalAlignment="Left" Margin="0,0,0,32"/>
+        <Grid Margin="160,0,0,32" Background="{DynamicResource CONTENT}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32">
+                <Border Background="{DynamicResource CONTENT}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32" BorderBrush="{DynamicResource ACCENT}" BorderThickness="2,0,0,2" Margin="0,0,-10,0" CornerRadius="0,0,0,10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,10,0">
+                        <Image Source="{DynamicResource RATING}" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="Episode_Rating" Text="9.99" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{DynamicResource CONTENT}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32" BorderBrush="{DynamicResource ACCENT}" BorderThickness="2,0,0,2" Margin="0,0,-10,0" CornerRadius="0,0,0,10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,0,10,0">
+                        <Image Source="{DynamicResource CLOCK}" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="Episode_Length" Text="99m" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{DynamicResource CONTENT}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32" BorderBrush="{DynamicResource ACCENT}" BorderThickness="2,0,0,2" Margin="0" CornerRadius="0,0,0,10">
+                    <TextBlock x:Name="Episode_Num" Text="#999" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="5,0"/>
+                </Border>
+            </StackPanel>
+            <TextBlock x:Name="Episode_Summary" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut bibendum orci, quis convallis sem. Sed feugiat dignissim risus dapibus dignissim." Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="5,40,5,32" TextWrapping="Wrap"/>
+            <StackPanel x:Name="Episode_Resources" Orientation="Horizontal" VerticalAlignment="Bottom" Height="32"/>
+        </Grid>
+        <Grid VerticalAlignment="Bottom" Height="32" Background="{DynamicResource CONTENT}">
+            <TextBlock x:Name="Episode_Title" Text="The beggining of AniLife" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" FontSize="18.667"/>
+        </Grid>
+    </Grid>
+</UserControl>

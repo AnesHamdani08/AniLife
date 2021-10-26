@@ -1,0 +1,36 @@
+﻿<hc:BlurWindow x:Class="InputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AniLife"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="Input Dialog" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" MaxWidth="1280" MaxHeight="720" Background="{DynamicResource BG}" Icon="{DynamicResource ICON}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}" CloseButtonForeground="{DynamicResource ACCENT}" CloseButtonBackground="{DynamicResource CONTENT}" NonClientAreaBackground="{DynamicResource BG}" NonClientAreaForeground="{DynamicResource TEXT}" BorderThickness="1">
+    <TabControl x:Name="MainTabControl" Background="{DynamicResource BG}" Foreground="{DynamicResource TEXT}" BorderBrush="{DynamicResource ACCENT}">
+        <TabItem Header="Text Input" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+            <Grid>
+                <TextBox x:Name="ib_input" Height="23" Margin="10,0,50,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Background="{DynamicResource BG}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}"/>
+                <ScrollViewer Margin="0,0,0,54">
+                    <TextBox x:Name="ib_msg" Margin="0,0,0,0" Text="Hello!" TextWrapping="Wrap" TextAlignment="Center" IsReadOnly="True" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}"/>
+                </ScrollViewer>
+                <Button x:Name="ib_done" IsDefault="True" Content="ü" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="31" FontFamily="Wingdings" FontSize="16" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Boolean Input" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+            <Grid>
+                <Button x:Name="BooleanTrue" VerticalAlignment="Stretch" HorizontalAlignment="Left" Height="Auto" Content="True" FontSize="100" Margin="0" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" BorderBrush="{DynamicResource ACCENT}"/>
+                <Button x:Name="BooleanFalse" VerticalAlignment="Stretch" HorizontalAlignment="Right" Height="Auto" Content="False" FontSize="100" Foreground="{DynamicResource OVERLAYTEXT}" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Integer Input" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+            <Grid>
+                <ScrollViewer Margin="0,0,0,65">
+                    <TextBox x:Name="ib_msg1" Margin="0,0,0,0" Text="{Binding Text,ElementName=ib_msg}" TextWrapping="Wrap" TextAlignment="Center" IsReadOnly="True" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}"/>
+                </ScrollViewer>
+                <hc:NumericUpDown x:Name="IntegerValue" Margin="0,0,0,35" VerticalAlignment="Bottom" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}"/>
+                <Button x:Name="IntegerDone" IsDefault="True" Content="Done!" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Bottom" FontSize="16" Height="Auto" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</hc:BlurWindow>

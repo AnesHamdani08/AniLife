@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="LoadingLine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             Width="256" Height="10">
+    <Grid Background="{DynamicResource CONTENT}" ClipToBounds="True">
+        <Rectangle x:Name="LoadingDancer" Fill="{DynamicResource ACCENT}" Width="64" HorizontalAlignment="Left" Margin="-32,0,0,0"/>
+    </Grid>
+</UserControl>

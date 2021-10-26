@@ -1,0 +1,75 @@
+﻿<Window x:Class="ThemeMaker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:AniLife"
+        mc:Ignorable="d"
+        Title="Theme Maker" Icon="{DynamicResource BRUSH}" ResizeMode="NoResize" Background="{DynamicResource BG}" WindowStartupLocation="CenterScreen" Width="498">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel HorizontalAlignment="Left" Width="150" Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_BACKGROUND}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_BG" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_TOPBAR}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_TOPBAR" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_TOPBARTEXT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_TOPBARTEXT" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_CONTENT" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_ACCENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_ACCENT" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_OVERLAY}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_OVERLAY" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_OVERLAYTEXT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_OVERLAYTEXT" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_TEXT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_TEXT" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock Text="{DynamicResource L_FONT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Button x:Name="SET_FONT" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="10,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <Grid Margin="10,0,0,0">
+                <Rectangle Fill="{DynamicResource BG}"/>
+                <Rectangle Fill="{DynamicResource TOPBAR}" Height="30" VerticalAlignment="Top"/>
+                <TabControl VerticalAlignment="Top" Margin="0,30,0,0">
+                    <TabItem Header="{DynamicResource L_HOME}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}"/>
+                    <TabItem Header="{DynamicResource L_COLLECTION}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}"/>
+                    <TabItem Header="{DynamicResource L_BROWSE}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}"/>
+                    <TabItem Header="{DynamicResource L_SETTINGS}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}"/>
+                    <TabItem Header="{DynamicResource L_SEARCH}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}"/>
+                </TabControl>
+                <Rectangle Fill="{DynamicResource CONTENT}" Width="200" Height="130" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Grid Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="Grid_MouseDown">
+                    <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource ICON}" />
+                    <TextBlock Text="{DynamicResource L_OVERLAY}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Grid>
+                <Button x:Name="SET_DONE" Background="{DynamicResource CONTENT}" Content="{DynamicResource L_SET}" BorderBrush="{DynamicResource ACCENT}" BorderThickness="1" Foreground="{DynamicResource TEXT}" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <Grid x:Name="I_OV" Background="{DynamicResource OVERLAY}" Visibility="Collapsed">
+                    <TextBlock x:Name="LoadingScreen_State" Text="{DynamicResource L_LOADING}" Foreground="{DynamicResource OVERLAYTEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+        </StackPanel>
+        <Grid x:Name="OV" Background="{DynamicResource OVERLAY}" Visibility="Collapsed">
+            <hc:ColorPicker x:Name="OV_CLRPICKER" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

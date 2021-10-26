@@ -1,0 +1,43 @@
+﻿<Window x:Class="InitialSetup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:AniLife"
+        mc:Ignorable="d"
+        Title="InitialSetup" Height="600" Width="1000" Background="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="{DynamicResource ICON}">
+    <Grid>
+        <Image x:Name="Background_Image" Source="/AniLife;component/Resources/ANIME_BG.png" Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="0"/>
+            </Image.Effect>
+        </Image>
+        <Grid x:Name="EffectsPage">
+            
+        </Grid>
+        <Grid x:Name="FirstPage">
+            <Image x:Name="Main_Logo" Source="{DynamicResource LOGO}" Margin="200,200,200,200" Opacity="0"/>
+            <TextBlock x:Name="Main_Text" Text="{DynamicResource L_WALKTHROUGH}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Opacity="0" TextWrapping="Wrap"/>
+            <Button x:Name="Main_Start" Content=">" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="380,40,0,0" Background="{x:Null}" Foreground="White" BorderThickness="0" FontSize="18.667" Opacity="0"/>
+        </Grid>
+        <Grid x:Name="SecondPage" Margin="1000,0,-1000,0">
+            <Image Source="{DynamicResource LOGO}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="64" Margin="10"/>
+            <Grid x:Name="SecondPage_First">
+                <TextBlock Text="{DynamicResource L_LIBRARYPATHS}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <Button x:Name="Second_AddLibrayPath" Content="{DynamicResource L_ADD}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-60,100,0,0"/>
+                <Button x:Name="Second_Next" Content="{DynamicResource L_NEXT}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="60,100,0,0"/>
+            </Grid>
+            <Grid x:Name="SecondPage_Second" Margin="1000,0,-1000,0">
+                <TextBlock Text="Set Data And Cache Location" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <Button x:Name="Second_Second_DataLocation" Content="{DynamicResource L_SET}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-120,100,0,0"/>
+                <Button x:Name="Second_Second_Previous" Content="{DynamicResource L_PREVIOUS}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                <Button x:Name="Second_Second_Next" Content="{DynamicResource L_NEXT}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="130,100,0,0"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="LastPage" Opacity="0" Visibility="Collapsed">
+            <Image Source="{DynamicResource LOGO}" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <local:LoadingLine HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,220,0,0"/>
+        </Grid>              
+    </Grid>
+</Window>

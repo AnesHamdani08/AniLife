@@ -1,0 +1,83 @@
+﻿<hc:BlurWindow x:Class="EntryEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:AniLife"
+        mc:Ignorable="d"
+        Title="Entry Editor" Height="600" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderThickness="2" BorderBrush="{DynamicResource ACCENT}" Background="{DynamicResource BG}">
+    <StackPanel Orientation="Horizontal">
+        <Image x:Name="Entry_Image" Source="{DynamicResource WARNING}" Width="300"/>
+        <StackPanel Orientation="Vertical" Background="{DynamicResource CONTENT}">
+            <TextBlock x:Name="Entry_Title" Text="Title" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,10,0,0" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock  Text="{DynamicResource L_SCORE}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"/>
+                <hc:NumericUpDown x:Name="Entry_Score" Minimum="0" Maximum="9.99" Margin="10,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="{DynamicResource L_EPISODEPROGRESS}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"/>
+                <hc:NumericUpDown x:Name="Entry_EpisodeProgress" Margin="10,0,0,0" Minimum="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                <TextBlock Text="{DynamicResource L_NOTE}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"/>
+                <TextBox x:Name="Entry_Note" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" BorderThickness="1"  BorderBrush="{DynamicResource ACCENT}" AcceptsReturn="True" Height="150" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </StackPanel>
+            <TextBlock x:Name="Entry_Status" Text="Status: " Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Height="32">
+                <TextBlock Text="{DynamicResource L_SETAS}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button x:Name="Entry_SetAs_Watching" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{DynamicResource PLAY}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="Entry_SetAs_Completed" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{DynamicResource CHECKMARK}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="Entry_SetAs_Planning" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{DynamicResource PLAN}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="Entry_SetAs_Paused" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{DynamicResource PAUSE}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="Entry_SetAs_Dropped" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{DynamicResource STOP}"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <Button x:Name="Entry_Save" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="{DynamicResource CONTENT}" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource EDIT}" Width="16"/>
+                        <TextBlock Text="{DynamicResource L_SAVE}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="Entry_Close" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="{DynamicResource CONTENT}" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{DynamicResource CROSS}" Width="16"/>
+                        <TextBlock Text="{DynamicResource L_CLOSE}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</hc:BlurWindow>

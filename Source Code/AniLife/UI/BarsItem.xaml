@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="BarsItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             Width="256" Height="128">
+    <Viewbox>
+        <Grid>
+            <TextBlock x:Name="Ping_TB" Foreground="{DynamicResource TEXT}" FontSize="26.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Rectangle x:Name="Bar_1" Fill="{DynamicResource CONTENT}" Stroke="{DynamicResource ACCENT}" Width="47" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" RadiusX="5" RadiusY="5"/>
+            <Rectangle x:Name="Bar_2" Fill="{DynamicResource CONTENT}" Stroke="{DynamicResource ACCENT}" Width="47" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="52,0,0,0" RadiusX="5" RadiusY="5"/>
+            <Rectangle x:Name="Bar_3" Fill="{DynamicResource CONTENT}" Stroke="{DynamicResource ACCENT}" Width="47" Height="75" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="104,0,0,0" RadiusX="5" RadiusY="5"/>
+            <Rectangle x:Name="Bar_4" Fill="{DynamicResource CONTENT}" Stroke="{DynamicResource ACCENT}" Width="47" Height="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="156,0,0,0" RadiusX="5" RadiusY="5"/>
+            <Rectangle x:Name="Bar_5" Fill="{DynamicResource CONTENT}" Stroke="{DynamicResource ACCENT}" Width="47" Height="125" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="208,0,0,0" RadiusX="5" RadiusY="5"/>
+        </Grid>
+    </Viewbox>
+</UserControl>

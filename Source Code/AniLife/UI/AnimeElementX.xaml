@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="AnimeElementX"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             Width="200" Height="300" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}">
+    <Grid Background="#00000000">
+        <Image x:Name="AnimeCover" Margin="0,0,0,30" Source="{DynamicResource WARNING}"/>
+        <TextBlock x:Name="AnimeName" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Text="{DynamicResource L_EP}" Foreground="{DynamicResource TEXT}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextWrapping="Wrap" FontSize="16"/>
+        <Grid x:Name="LibraryControls" Width="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Opacity="0">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" CornerRadius="10" Margin="0,-10,0,0"/>
+           <Image x:Name="SetAsWatching" Source="{DynamicResource PLAY}" Height="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,87" Opacity="0">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="White"/>
+                </Image.Effect>
+            </Image>
+            <Image x:Name="SetAsCompleted" Source="{DynamicResource CHECKMARK}" Width="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,57" Opacity="0">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="White"/>
+                </Image.Effect>
+            </Image>
+            <Image x:Name="SetAsPlanning" Source="{DynamicResource PLAN}" Height="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Opacity="0">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="White"/>
+                </Image.Effect>
+            </Image>
+        </Grid>
+        <Grid x:Name="CensorOV" Background="Black" Visibility="Collapsed" MouseLeftButtonUp="CensorOV_MouseLeftButtonUp">
+            <TextBlock FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Text="{DynamicResource L_RESTRICTEDCONTENT}" Foreground="{DynamicResource TEXT}" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" TextAlignment="Center"/>
+        </Grid>
+    </Grid>
+</UserControl>

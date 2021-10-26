@@ -1,0 +1,526 @@
+﻿<hc:BlurWindow x:Name="MeWindow" x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"   
+        xmlns:local="clr-namespace:AniLife"
+        mc:Ignorable="d"
+        Title="{DynamicResource L_APPNAME}" Height="720" Width="1280" Background="{DynamicResource BG}" Icon="{DynamicResource ICON}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}" CloseButtonForeground="{DynamicResource ACCENT}" CloseButtonBackground="{DynamicResource CONTENT}" NonClientAreaBackground="{DynamicResource BG}" NonClientAreaForeground="{DynamicResource TEXT}" BorderThickness="1">
+    <hc:BlurWindow.Resources>
+        <local:StringLengthToVisibilityConverter x:Key="StringLengthToVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <local:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+        <system:Int32 x:Key="Collection_All">0</system:Int32>
+        <system:Int32 x:Key="Collection_Watching">0</system:Int32>
+        <system:Int32 x:Key="Collection_Completed">0</system:Int32>
+        <system:Int32 x:Key="Collection_Paused">0</system:Int32>
+        <system:Int32 x:Key="Collection_Dropped">0</system:Int32>
+        <system:Int32 x:Key="Collection_Planning">0</system:Int32>
+    </hc:BlurWindow.Resources>
+    <hc:BlurWindow.NonClientAreaContent>
+        <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Foreground="{DynamicResource ACCENT}" Background="{DynamicResource CONTENT}" BorderThickness="0" hc:IconElement.Geometry="{StaticResource FullScreenGeometry}" Visibility="{Binding IsFullScreen, Converter={StaticResource InverseBooleanToVisibilityConverter}, ElementName=MeWindow}" Click="ToggleFullscreen"/>
+            <Button Foreground="{DynamicResource ACCENT}" Background="{DynamicResource CONTENT}" BorderThickness="0" hc:IconElement.Geometry="{StaticResource FullScreenReturnGeometry}" Visibility="{Binding IsFullScreen, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=MeWindow}" Click="ToggleFullscreen"/>
+        </StackPanel>
+    </hc:BlurWindow.NonClientAreaContent>
+    <Grid>
+        <Grid x:Name="TopBar" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="64" Background="{DynamicResource TOPBAR}">
+            <Image x:Name="TopBar_Logo" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10" Source="{DynamicResource LOGO}"/>
+            <Rectangle Fill="{DynamicResource ACCENT}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="1" Margin="132,10,0,10"/>
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="140,0,0,10">
+                <WrapPanel Orientation="Horizontal">
+                    <hc:CircleProgressBar x:Name="TopBar_Loading" Width="32" Height="32" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Visible" Margin="0,0,10,0"/>
+                    <Image x:Name="TopBar_WARN" Source="{DynamicResource WARNING}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+                    <Image x:Name="TopBar_NONET" Source="{DynamicResource NONET}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,10,0"/>
+                    <Image x:Name="TopBar_UPDATES" Source="{DynamicResource UPDATE}" ToolTip="{DynamicResource L_UPDATESCHECK}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,10,0" RenderTransformOrigin="0.5,0.5"/>
+                    <Image x:Name="TopBar_MAIL" Source="{DynamicResource MAIL}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,10,0">
+                        <Image.ToolTip>
+                            <WrapPanel x:Name="TopBar_MAIL_ToolTip_WP" Orientation="Vertical"/>
+                        </Image.ToolTip>
+                    </Image>
+                    <Border x:Name="TopBar_MAIL_Notification_Text_Container" Background="{DynamicResource ACCENT}" Height="32" CornerRadius="0,0,15,0" Width="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="-5,0,5,0">
+                        <TextBlock x:Name="TopBar_MAIL_Notification_Text" Foreground="{DynamicResource TOPBARTEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </Border>
+                    <Grid Margin="0,0,10,0">
+                        <Border x:Name="TopBar_Apps_Container" Background="{DynamicResource CONTENT}" Height="32" Width="0" CornerRadius="15" Opacity="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <WrapPanel Orientation="Horizontal" Margin="37,0,0,0">
+                                <Rectangle Fill="{DynamicResource ACCENT}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="1" Margin="0,2,0,2"/>
+                                <Ellipse x:Name="TopBar_Apps_AUDX" Stroke="{DynamicResource ACCENT}" Width="32" Height="32" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SET_AUDX}">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{DynamicResource MUSIC}" Stretch="Uniform"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Ellipse x:Name="TopBar_Apps_ImageViewer" Stroke="{DynamicResource ACCENT}" Width="32" Height="32" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{DynamicResource IMAGE}" Stretch="Uniform"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Ellipse x:Name="TopBar_Apps_VideoViewer" Stroke="{DynamicResource ACCENT}" Width="32" Height="32" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Visibility="Collapsed">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{DynamicResource STREAM}" Stretch="Uniform"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </WrapPanel>
+                        </Border>
+                        <Image x:Name="TopBar_Apps" Source="{DynamicResource APPS}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <Grid Margin="0,0,10,0">
+                        <Border Background="{DynamicResource CONTENT}" CornerRadius="15" Opacity="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <WrapPanel x:Name="TopBar_Apps_AUDX_Controls" Visibility="Collapsed">
+                                <Button x:Name="Media_Play" VerticalAlignment="Center" HorizontalAlignment="Left" Width="32" Height="32">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="{DynamicResource PLAY}" Stretch="Uniform"/>
+                                    </Button.Background>
+                                </Button>
+                                <Button x:Name="Media_Pause" VerticalAlignment="Center" HorizontalAlignment="Left" Width="32" Height="32" Visibility="Collapsed">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="{DynamicResource PAUSE}" Stretch="Uniform"/>
+                                    </Button.Background>
+                                </Button>
+                                <Slider x:Name="Media_Track" Margin="10,0,0,0" VerticalAlignment="Center" Width="150" IsMoveToPointEnabled="True"/>
+                                <local:VolumeControl x:Name="Media_Volume" Height="25" Margin="10,0,10,0"/>
+                            </WrapPanel>
+                        </Border>
+                    </Grid>
+                </WrapPanel>
+            </Grid>
+            <Button x:Name="TopBar_Search" hc:IconElement.Geometry="{StaticResource SearchGeometry}"  Margin="0,0,10,0" Background="#000F3460" Foreground="{DynamicResource ACCENT}" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox x:Name="TopBar_Search_Data" Width="0" Background="{DynamicResource CONTENT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" BorderBrush="{DynamicResource ACCENT}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,48,0"/>
+        </Grid>
+        <TabControl x:Name="MainTabControl" Margin="0,64,0,0" Background="{x:Null}" Style="{StaticResource TabControlInLine}">
+            <TabItem Header="{DynamicResource L_HOME}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <StackPanel>
+                        <TextBlock x:Name="Home_Quote" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" FontSize="16" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+                        <TextBlock Text="{DynamicResource L_CURRENTLYWATCHING}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0"/>
+                        <ScrollViewer VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="140" Margin="30,10,30,0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
+                            <WrapPanel x:Name="Home_AnimeInProgress" Orientation="Horizontal" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Height="140" Background="{DynamicResource CONTENT}"/>
+                        </ScrollViewer>
+                        <TextBlock Text="{DynamicResource L_RECENTACTIVITY}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0"/>
+                        <ScrollViewer x:Name="Home_Acitivity_SV" Margin="30,10,30,0" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="300" Width="260" HorizontalAlignment="Left">
+                            <WrapPanel x:Name="Home_Activity" Orientation="Vertical" Background="{DynamicResource CONTENT}"/>
+                        </ScrollViewer>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource L_COLLECTION}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Background="{DynamicResource CONTENT}" Width="150" Margin="10">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{DynamicResource L_LISTS}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10"/>
+                                <ToggleButton x:Name="Collection_Show_All" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Content="{DynamicResource L_ALL}" FontSize="16" Margin="0,10,0,0" HorizontalContentAlignment="Left" BorderThickness="0" ToolTip="{DynamicResource Collection_All}"/>
+                                <ToggleButton x:Name="Collection_Show_Watching" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Content="{DynamicResource L_WATCHING}" FontSize="16" Margin="0,10,0,0" HorizontalContentAlignment="Left" BorderThickness="0" ToolTip="{DynamicResource Collection_Watching}"/>
+                                <ToggleButton x:Name="Collection_Show_Completed" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Content="{DynamicResource L_COMPLETED}" FontSize="16" Margin="0,10,0,0" HorizontalContentAlignment="Left" BorderThickness="0" ToolTip="{DynamicResource Collection_Completed}"/>
+                                <ToggleButton x:Name="Collection_Show_Paused" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Content="{DynamicResource L_PAUSED}" FontSize="16" Margin="0,10,0,0" HorizontalContentAlignment="Left" BorderThickness="0" ToolTip="{DynamicResource Collection_Paused}"/>
+                                <ToggleButton x:Name="Collection_Show_Dropped" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Content="{DynamicResource L_DROPPED}" FontSize="16" Margin="0,10,0,0" HorizontalContentAlignment="Left" BorderThickness="0" ToolTip="{DynamicResource Collection_Dropped}"/>
+                                <ToggleButton x:Name="Collection_Show_Planning" Background="{DynamicResource CONTENT}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Content="{DynamicResource L_PLANNING}" FontSize="16" Margin="0,10,0,0" HorizontalContentAlignment="Left" BorderThickness="0" ToolTip="{DynamicResource Collection_Planning}"/>
+                            </StackPanel>
+                        </Grid>
+                        <ScrollViewer x:Name="Collection_SV" VerticalScrollBarVisibility="Auto" Margin="10">
+                            <StackPanel>
+                                <TextBlock Text="{DynamicResource L_WATCHING}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0" Visibility="{Binding Visibility,ElementName=Collection_Watching}"/>
+                                <ListView x:Name="Collection_Watching" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="{DynamicResource L_TITLE}" DisplayMemberBinding="{Binding Title}" Width="500"/>
+                                            <GridViewColumn Header="{DynamicResource L_SCORE}" DisplayMemberBinding="{Binding Score}" Width="60"/>
+                                            <GridViewColumn Header="{DynamicResource L_PROGRESS}" DisplayMemberBinding="{Binding Progress}" Width="70"/>
+                                            <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="100"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBlock Text="{DynamicResource L_COMPLETED}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0"  Visibility="{Binding Visibility,ElementName=Collection_Completed}"/>
+                                <ListView x:Name="Collection_Completed" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="{DynamicResource L_TITLE}" DisplayMemberBinding="{Binding Title}" Width="500"/>
+                                            <GridViewColumn Header="{DynamicResource L_SCORE}" DisplayMemberBinding="{Binding Score}" Width="60"/>
+                                            <GridViewColumn Header="{DynamicResource L_PROGRESS}" DisplayMemberBinding="{Binding Progress}" Width="70"/>
+                                            <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="100"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBlock Text="{DynamicResource L_PAUSED}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0" Visibility="{Binding Visibility,ElementName=Collection_Paused}"/>
+                                <ListView x:Name="Collection_Paused" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="{DynamicResource L_TITLE}" DisplayMemberBinding="{Binding Title}" Width="500"/>
+                                            <GridViewColumn Header="{DynamicResource L_SCORE}" DisplayMemberBinding="{Binding Score}" Width="60"/>
+                                            <GridViewColumn Header="{DynamicResource L_PROGRESS}" DisplayMemberBinding="{Binding Progress}" Width="70"/>
+                                            <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="100"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBlock Text="{DynamicResource L_DROPPED}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0" Visibility="{Binding Visibility,ElementName=Collection_Dropped}"/>
+                                <ListView x:Name="Collection_Dropped" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="{DynamicResource L_TITLE}" DisplayMemberBinding="{Binding Title}" Width="500"/>
+                                            <GridViewColumn Header="{DynamicResource L_SCORE}" DisplayMemberBinding="{Binding Score}" Width="60"/>
+                                            <GridViewColumn Header="{DynamicResource L_PROGRESS}" DisplayMemberBinding="{Binding Progress}" Width="70"/>
+                                            <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="100"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBlock Text="{DynamicResource L_PLANNING}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,10,0,0" Visibility="{Binding Visibility,ElementName=Collection_Planning}"/>
+                                <ListView x:Name="Collection_Planning" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="{DynamicResource L_TITLE}" DisplayMemberBinding="{Binding Title}" Width="500"/>
+                                            <GridViewColumn Header="{DynamicResource L_SCORE}" DisplayMemberBinding="{Binding Score}" Width="60"/>
+                                            <GridViewColumn Header="{DynamicResource L_PROGRESS}" DisplayMemberBinding="{Binding Progress}" Width="70"/>
+                                            <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="100"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource L_APPNAME}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <ScrollViewer x:Name="AniLife_SV" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="AniLife_SP">
+                            <WrapPanel>
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource RATING}" />
+                                <TextBlock Text="{DynamicResource L_FEATURED}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                            </WrapPanel>
+                            <WrapPanel x:Name="AniLife_Featured" Orientation="Horizontal" Background="{DynamicResource CONTENT}" Margin="0,10,0,0"/>
+                            <WrapPanel Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource FEMALE}" />
+                                <TextBlock Text="{DynamicResource L_WAIFU}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                            </WrapPanel>
+                            <WrapPanel x:Name="AniLife_Waifu" Orientation="Horizontal" Background="{DynamicResource CONTENT}" Margin="0,10,0,0"/>
+                            <WrapPanel Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource MUSIC}" />
+                                <TextBlock Text="{DynamicResource L_SOUNDTRACKS}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                            </WrapPanel>
+                            <WrapPanel x:Name="AniLife_SoundTracks" Orientation="Horizontal" Background="{DynamicResource CONTENT}" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource L_BROWSE}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <TabControl Background="{x:Null}" Style="{StaticResource TabControlInLine}">
+                        <TabItem Header="{DynamicResource L_BROWSE}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                            <ScrollViewer x:Name="Browse_SV" VerticalScrollBarVisibility="Auto">
+                                <StackPanel x:Name="Browse_SP">
+                                    <Grid>
+                                        <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource TRENDING}" />
+                                        <TextBlock Text="{DynamicResource L_HOTANIME}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <WrapPanel x:Name="Browse_HotAnimes" Orientation="Horizontal" Background="{DynamicResource CONTENT}" Margin="0,10,0,0"/>
+                                    <Grid Margin="0,10,10,10">
+                                        <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource ANIMEBOY}"/>
+                                        <TextBlock Text="{DynamicResource L_RANDOMRECOMMENDATIONS}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <WrapPanel x:Name="Browse_RandomRecommendations" Orientation="Horizontal" Background="{DynamicResource CONTENT}" Margin="0,10,0,0"/>
+                                    <Grid Margin="0,10,10,10">
+                                        <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource DRIVE}"/>
+                                        <TextBlock Text="{DynamicResource L_OFFLINEBROWSING}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <WrapPanel x:Name="Browse_OfflineBrowsing" Orientation="Horizontal" Background="{DynamicResource CONTENT}" Margin="0,10,0,0"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Header="{DynamicResource L_LOCALCOLLECTION}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <hc:CoverView x:Name="Browse_Library" Background="{DynamicResource CONTENT}" ItemMargin="10,10,0,0" ItemWidth="100" ItemHeight="140"/>
+                            </ScrollViewer>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource L_SETTINGS}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <ScrollViewer x:Name="Settings_SV" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical" Background="{DynamicResource CONTENT}">
+                            <Grid Margin="0,0,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource SETTINGS}"/>
+                                <TextBlock Text="{DynamicResource L_GENERAL}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <CheckBox x:Name="SET_CLIENT" Content="{DynamicResource L_SETCLIENT}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_BACKGROUNDLOADING" Content="{DynamicResource L_BACKGROUNDLOADING}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Text="{DynamicResource L_LIBRARYPATHS}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <ComboBox x:Name="SET_LIBRARY" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150"/>
+                                <Button x:Name="SET_LIBRARY_ADD" Margin="10,0,0,0" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource ACCENT}" hc:IconElement.Geometry="{StaticResource AddGeometry}"/>
+                                <Button x:Name="SET_LIBRARY_REMOVE" Margin="10,0,0,0" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource ACCENT}" hc:IconElement.Geometry="{StaticResource RemoveGeometry}"/>
+                            </StackPanel>
+                            <Grid Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource BRUSH}" />
+                                <TextBlock Text="{DynamicResource L_THEME}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                                <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource L_THEME}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <ComboBox x:Name="SET_THEME" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150">
+                                        <ComboBoxItem Content="Default" Tag="Default"/>
+                                        <ComboBoxItem Content="Glitter" Tag="Glitter"/>
+                                        <ComboBoxItem Content="Violet" Tag="Violet"/>
+                                        <ComboBoxItem Content="Blue" Tag="Blue"/>
+                                        <ComboBoxItem Content="Light" Tag="Light"/>
+                                        <ComboBoxItem Content="Browse" Tag="Browse"/>
+                                        <ComboBoxItem Content="Custom" Tag="Custom"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <CheckBox x:Name="SET_CLEARCUSTOMLOCKWALL" Content="{DynamicResource L_CLEARCUSTOMLOCKWALL}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource LANGUAGE}"/>
+                                <TextBlock Text="{DynamicResource L_LANGUAGE}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <ComboBox x:Name="SET_LANGUAGE" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150">
+                                    <ComboBoxItem Content="English" Tag="EN_US"/>
+                                    <ComboBoxItem Content="Arabic" Tag="AR_DZ"/>
+                                    <ComboBoxItem Content="French" Tag="FR_FR"/>
+                                    <ComboBoxItem Content="Browse" Tag="Browse"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <Grid Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource CLOUD}" />
+                                <TextBlock Text="{DynamicResource L_CLIENT}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <CheckBox x:Name="SET_DATALOCATION" Content="{DynamicResource L_SETDATALOCATION}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_OFFLINEBROWSING" Content="{DynamicResource L_OFFLINEBROWSING}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_LOADCHARACTERS" Content="{DynamicResource L_LOADCHARACTERS}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_LOADCHARACTERSPICTURES" Content="{DynamicResource L_LOADCHARACTERSPICTURES}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_LOADANIMEPICTURES" Content="{DynamicResource L_LOADANIMEPICTURES}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_R18" Content="{DynamicResource L_RESTRICTEDCONTENT}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_AUDX" Content="{DynamicResource L_AUDX}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_RAMOPTIMIZATION" Content="{DynamicResource L_MEMORYOPTIMIZATION}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center" IsEnabled="False"/>
+                            <Grid Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Source="{DynamicResource DATABASE}"/>
+                                <TextBlock Text="{DynamicResource L_CACHESETTINGS}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <CheckBox x:Name="SET_DISTINCTCACHE" Content="{DynamicResource L_DISTINCTCACHE}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_CLEARCACHE" Content="{DynamicResource L_CLEARCACHE}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_CLEARIMAGECACHE" Content="{DynamicResource L_CLEARIMAGECACHE}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <CheckBox x:Name="SET_UPDATECACHE" Content="{DynamicResource L_UPDATECACHE}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Foreground="{DynamicResource TEXT}" VerticalContentAlignment="Center"/>
+                            <Grid Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource ICON}" />
+                                <TextBlock Text="{DynamicResource L_ABOUT}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="40,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Width="32" Source="{DynamicResource SOCIALLINK}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{DynamicResource L_SOCIAL}" Foreground="{DynamicResource TEXT}" FontSize="16" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,10,0"/>
+                                <Image x:Name="SOCIAL_DISC" Source="{DynamicResource DISCORD}" Height="32" Margin="0,0,10,0"/>
+                                <Image x:Name="SOCIAL_SOURCEFORGE" Source="{DynamicResource SOURCEFORGE}" Height="32" Margin="0,0,10,0"/>
+                                <Image x:Name="SOCIAL_GITHUB" Source="{DynamicResource GITHUB}" Height="32" Margin="0,0,10,0"/>
+                            </StackPanel>
+                            <TextBlock x:Name="About_CacheSize" Text="{DynamicResource L_CACHESIZE}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_CacheLife" Text="{DynamicResource L_CACHELIFE}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock Text="API Ping:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <local:BarsItem Height="64" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,0" Width="Auto"/>
+                            <TextBlock x:Name="About_APIRequestDelay" Text="API Request Delay:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniCache" Text="AniCache:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniDB" Text="AniLife.API.AniDB:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniDB_Version" Text="AniLife.AniDB.ComponentVersion:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_Animechan" Text="AniLife.API.Animechan:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniLibrary" Text="AniLibrary:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniResolver" Text="AniResolver.LinkVersion:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniUIKit" Text="AniLife.UIKit:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AniServer" Text="AniServer:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock x:Name="About_AUDX" Text="Anes08.AUDX:" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock Text="Made Possible By: AniDB, Me" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource L_ANIME}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}" x:Name="Search_TAB">
+                    <TabControl Style="{StaticResource TabControlInLine}" Background="{DynamicResource BG}" Foreground="{DynamicResource TEXT}">
+                        <TabItem Header="{DynamicResource L_ANIME}" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="Search_Cover" Width="400" Source="{DynamicResource WARNING}" HorizontalAlignment="Left"/>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="{DynamicResource CONTENT}">
+                                    <StackPanel x:Name="Search_SP" Orientation="Vertical" Margin="10,0,0,0">
+                                        <StackPanel Orientation="Horizontal" Height="32" >
+                                            <TextBlock Text="{DynamicResource L_SETAS}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Button x:Name="Search_SetAs_Watching" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource PLAY}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SetAs_Completed" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource CHECKMARK}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SetAs_Planning" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource PLAN}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SetAs_Paused" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource PAUSE}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SetAs_Dropped" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource STOP}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SetAs_Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource EDIT}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Height="32" Margin="0,10,0,0">
+                                            <TextBlock Text="{DynamicResource L_SEEIN}" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Button x:Name="Search_SeeIn_ImageViewer" Background="{DynamicResource CONTENT}" Margin="10,0,0,0">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource IMAGE}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SeeIn_Wallpapers" Background="{DynamicResource CONTENT}" Margin="10,0,0,0" ToolTip="{DynamicResource L_WALLPAPER}">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource BRUSH}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SeeIn_AUDX_OP" Background="{DynamicResource CONTENT}" Margin="10,0,0,0"  Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SET_AUDX}" ToolTip="{DynamicResource L_OPENING}">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource MUSIC}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="Search_SeeIn_AUDX_ED" Background="{DynamicResource CONTENT}" Margin="10,0,0,0"  Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SET_AUDX}" ToolTip="{DynamicResource L_ENDING}">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{DynamicResource MUSIC}"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>
+                                        <TextBlock x:Name="Search_Title" Text="Title" Foreground="{DynamicResource TEXT}" FontSize="18.667" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_Description" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut bibendum orci, quis convallis sem. Sed feugiat dignissim risus dapibus dignissim. Integer felis arcu, lacinia vitae nulla id, pharetra efficitur enim. Integer tempus commodo velit non porta. Quisque tincidunt, sem et euismod scelerisque, purus nulla tempus metus, vel vehicula sapien dui nec augue. Sed malesuada a nisl ut scelerisque. Morbi mollis urna et leo ultrices, ut vestibulum mi ultrices. Aliquam elit augue, posuere quis ligula sed, malesuada viverra dui. Phasellus eu dignissim odio. Aliquam erat volutpat. Donec congue maximus nibh eget mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi interdum felis vel lacus tincidunt, a congue enim interdum. Proin auctor erat ac ligula vestibulum, vel pulvinar mauris congue. Aliquam at eros nec dui tristique maximus condimentum et urna." Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" VerticalAlignment="Center" MaxWidth="550" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_Prequel" Text="Prequel: XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left" TextDecorations="Underline" Visibility="{Binding Text, Converter={StaticResource StringLengthToVisibilityConverter}, ElementName=Search_Prequel}"/>
+                                        <TextBlock x:Name="Search_Sequel" Text="Sequel: XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left" TextDecorations="Underline"/>
+                                        <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                            <Image Source="{DynamicResource RATING}" Height="16" HorizontalAlignment="Left"/>
+                                            <TextBlock x:Name="Search_PermaRating" Text="0.00 By 0000 User" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Image Source="{DynamicResource CLOCK}" Height="16" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                                            <TextBlock x:Name="Search_AvgRating" Text="0.00 By 0000 User" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="Search_Format" Text="Format: XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_EpisodeCount" Text="Episode Count: XXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_Status" Text="Status: XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_StartDate" Text="Start Date: XX/XX/XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_EndDate" Text="End Date: XX/XX/XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                                        <TextBlock x:Name="Search_SeasonDate" Text="Season: XXXXX XXXX" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                                        <WrapPanel x:Name="Search_Tags" Margin="0,10,0,0" MaxWidth="560"/>
+                                        <TextBlock Text="{DynamicResource L_CHARACTERS}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                        <WrapPanel x:Name="Search_Characters" HorizontalAlignment="Left" MaxWidth="700"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{DynamicResource L_EPISODE}" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical">
+                                    <WrapPanel x:Name="Search_Episodes"/>
+                                    <TextBlock Text="{DynamicResource L_EXTRA}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                    <WrapPanel x:Name="Search_Episodes_Unrelated"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Header="{DynamicResource L_ABOUT}" Background="{DynamicResource CONTENT}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{DynamicResource L_EXTERNALLINKS}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                    <StackPanel x:Name="Search_Resources" Orientation="Horizontal" Margin="0,10,0,0"/>
+                                    <TextBlock Text="{DynamicResource L_CREATORS}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                    <ListView x:Name="Search_Creators" Margin="10" Background="{DynamicResource CONTENT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Left">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="{DynamicResource L_NAME}" DisplayMemberBinding="{Binding Name}" Width="300"/>
+                                                <GridViewColumn Header="{DynamicResource L_CREDIT}" DisplayMemberBinding="{Binding Credit}" Width="230"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                    <TextBlock Text="{DynamicResource L_TITLES}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                    <ListView x:Name="Search_Titles" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Left">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="{DynamicResource L_NAME}" DisplayMemberBinding="{Binding Name}" Width="320"/>
+                                                <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="110"/>
+                                                <GridViewColumn Header="{DynamicResource L_LANGUAGE}" DisplayMemberBinding="{Binding Language}" Width="100"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                    <TextBlock Text="{DynamicResource L_RELATEDANIMES}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                    <ListView x:Name="Search_Related" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Left">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="{DynamicResource L_NAME}" DisplayMemberBinding="{Binding Name}" Width="420"/>
+                                                <GridViewColumn Header="{DynamicResource L_TYPE}" DisplayMemberBinding="{Binding Type}" Width="110"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                    <TextBlock Text="{DynamicResource L_SIMILARANIMES}" Foreground="{DynamicResource TEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,10,0,0" FontSize="18.667" HorizontalAlignment="Left"/>
+                                    <ListView x:Name="Search_Similar" Margin="10" Background="{DynamicResource CONTENT}" Width="Auto" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" HorizontalAlignment="Left">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="{DynamicResource L_NAME}" DisplayMemberBinding="{Binding Name}" Width="420"/>
+                                                <GridViewColumn Header="{DynamicResource L_APPROVAL}" DisplayMemberBinding="{Binding Approval}" Width="110"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="{DynamicResource L_SEARCH}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <WrapPanel x:Name="SearchItems_Items" Orientation="Horizontal"/>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Watch_Tab" Header="{DynamicResource L_WATCHING}" Background="{DynamicResource TOPBAR}" Foreground="{DynamicResource TOPBARTEXT}" Visibility="Collapsed">
+                <Grid Margin="{DynamicResource CONTENT_MARGIN}">
+                    <MediaElement x:Name="Watch_MediaElement" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+                    <StackPanel x:Name="Watch_SP" Orientation="Horizontal" VerticalAlignment="Bottom" Height="40" Background="{DynamicResource CONTENT}">
+                        <Grid>
+                            <Image x:Name="Watch_Play" Source="{DynamicResource PLAY}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                            <Image x:Name="Watch_Pause" Source="{DynamicResource PAUSE}" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,0" Visibility="Collapsed"/>
+                        </Grid>
+                        <local:VolumeControl x:Name="Watch_VolumeControl" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <hc:PreviewSlider x:Name="Watch_Track" IsMoveToPointEnabled="True" Height="32" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="Watch_PosnDur" Text="00:00/00:00" Foreground="{DynamicResource TOPBARTEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,10,0"/>
+                        <Image x:Name="Watch_FullScreen" Source="{DynamicResource FULLVIEW}" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0" IsEnabled="False"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid x:Name="LoadingScreen" Background="{DynamicResource OVERLAY}" Visibility="Collapsed">
+            <TextBlock x:Name="LoadingScreen_State" Foreground="{DynamicResource OVERLAYTEXT}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Margin="0,-40,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <local:LoadingLine x:Name="LoadingScreen_Dancer" IsLoading="False"/>
+        </Grid>
+    </Grid>
+</hc:BlurWindow>

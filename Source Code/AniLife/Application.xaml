@@ -1,0 +1,23 @@
+﻿<Application x:Class="Application"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AniLife"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    StartupUri="MainWindow.xaml"    
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <hc:IntellisenseResources Source="/HandyControl;Component/DesignTime/DesignTimeResources.xaml"/>
+                <ResourceDictionary Source="/HandyControl;Component/DesignTime/DesignTimeResources.xaml"/>
+                <hc:ThemeResources/>
+                <hc:Theme/>
+                <!-- Other merged dictionaries here -->
+                <ResourceDictionary Source="/Colors/Default.xaml"/>
+                <ResourceDictionary Source="/Languages/EN_US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Other app resources here -->            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,25 @@
+﻿<hc:BlurWindow x:Class="SettingsBrowser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:AniLife"
+        mc:Ignorable="d"
+        Height="600" Width="800" WindowStartupLocation="CenterOwner" Title="{DynamicResource L_APPNAME}" Background="{DynamicResource BG}" Icon="{DynamicResource ICON}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}" CloseButtonForeground="{DynamicResource ACCENT}" CloseButtonBackground="{DynamicResource CONTENT}" NonClientAreaBackground="{DynamicResource BG}" NonClientAreaForeground="{DynamicResource TEXT}" BorderThickness="1">
+    <hc:Window.NonClientAreaContent>
+        <Button x:Name="TitleBar_Refresh" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RotateLeftGeometry}" HorizontalAlignment="Right" />
+    </hc:Window.NonClientAreaContent>
+    <!--<ScrollViewer Margin="0">-->
+        <ListView x:Name="Main_SettingsView" Background="{DynamicResource BG}" BorderBrush="{DynamicResource ACCENT}" Foreground="{DynamicResource TEXT}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="#" DisplayMemberBinding="{Binding Num}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}"/>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    <!--</ScrollViewer>-->
+</hc:BlurWindow>

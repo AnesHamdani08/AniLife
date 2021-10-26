@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="AnimeElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             Width="100" Height="140" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid Background="#00000000">
+        <Image x:Name="Anime_Picture" Source="{StaticResource WARNING}"/>
+        <Grid VerticalAlignment="Bottom" Height="25" Background="#3F000000">
+            <TextBlock x:Name="EpisodeProgress" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Text="Ep 00" Foreground="{DynamicResource TEXT}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Button x:Name="Anime_IncrProgress" Background="#BF000000" Foreground="{DynamicResource ACCENT}" hc:IconElement.Geometry="{StaticResource AddGeometry}" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" FontSize="21.333" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="50,70,50,70" BorderThickness="0"/>
+
+    </Grid>
+</UserControl>

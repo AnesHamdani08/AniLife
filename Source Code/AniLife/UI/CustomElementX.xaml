@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="CustomElementX"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             Width="200" Height="300" BorderThickness="1" BorderBrush="{DynamicResource ACCENT}">
+    <Grid Background="#00000000">
+        <Image x:Name="ItemCover" Margin="0,0,0,30" Source="{DynamicResource UPDATE}"/>
+        <TextBlock x:Name="ItemName" FontFamily="{DynamicResource FONT}" FontWeight="{DynamicResource FONT_WEIGHT}" Text="{DynamicResource L_BROWSE}" Foreground="{DynamicResource TEXT}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextWrapping="Wrap" FontSize="16"/>
+    </Grid>
+</UserControl>
