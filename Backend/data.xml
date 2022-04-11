@@ -5,6 +5,7 @@
     <Anime>15735</Anime>
     <Anime>16132</Anime>
     <Anime>15421</Anime>
+    <Anime>16266</Anime>
   </Featured>
   <Waifu>
     <Character Thumb="https://cdn.myanimelist.net/images/characters/11/422915.jpg" Target="15998">114900</Character>
@@ -25,5 +26,6 @@
     <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/LikeFlames.jpg" Source="0" Title="Like Flames" Artist="Minda Ryn" Anime="Tensei Shitara Slime Datta Ken (2021)" Aid="14767">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/LikeFlames.mp3</Ost>
     <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/FateSong.jpg" Source="0" Title="To The Beggining" Artist="Kalafina" Anime="Fate/Zero" Aid="8160">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/ToTheBeggining.mp3</Ost>
     <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/FateSong.jpg" Source="0" Title="Oath Sign" Artist="LiSA" Anime="Fate/Zero" Aid="8160">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/OathSign.mp3</Ost>
+    <Ost Thumb="https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/Gold.jpg" Source="0" Title="Gold" Artist="EGOIST" Anime="Build Divide: Code White" Aid="16266">https://raw.githubusercontent.com/AnesHamdani08/AniLife/gh-pages/Backend/Docs/Gold.mp3</Ost>
   </OST>
 </AniLife>
