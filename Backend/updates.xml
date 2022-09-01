@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AniLife>
   <Updates>
-    <Update Type="1" Version="0.0.0.1-Beta.4" Target="anilife"/>
+    <Update Type="1" Version="0.0.0.1-Beta.5" Target="anilife"/>
     <Update Type="0" Version="0.0.0.1-Beta.3" Target="anicache"/>
     <Update Type="0" Version="0.0.0.1-Beta.2" Target="anilibrary"/>
     <Update Type="0" Version="0.0.0.1-Beta.4" Target="aniresolver"/>
