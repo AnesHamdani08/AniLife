@@ -164,6 +164,7 @@
     <sys:String x:Key="L_SETCLIENT">Set Client Credentials</sys:String>
     <sys:String x:Key="L_VERSION">Version</sys:String>
     <sys:String x:Key="L_CREDENTIALSWARNING">Checking Credentials</sys:String>
+    <sys:String x:Key="L_CREADENTIALSFILL">Please Enter Your Credentials</sys:String>
     <sys:String x:Key="L_BACKGROUNDLOADING">Background Loading</sys:String>
     <sys:String x:Key="L_FEATURED">Featured</sys:String>
     <sys:String x:Key="L_WAIFU">Waifu</sys:String>
@@ -178,12 +179,12 @@
     <sys:String x:Key="L_UPDATESERROR">Couldn't Check For Updates</sys:String>
     <sys:String x:Key="L_SOCIAL">Social</sys:String>
     <sys:String x:Key="L_EXTERNALLINKS">External Links</sys:String>
+    <sys:String x:Key="L_EXTERNALPLAYER">External Player</sys:String>
     <sys:String x:Key="L_EXTRA">Extra</sys:String>
     <sys:String x:Key="L_WALLPAPER">Wallpaper</sys:String>
     <sys:String x:Key="L_LOCKSCREEN">Lock Screen</sys:String>
     <sys:String x:Key="L_VIEW">View</sys:String>
     <sys:String x:Key="L_INIT_NOINTERNET">Internet connection is not available, do you want to run offline setup ?</sys:String>
-    <sys:String x:Key="L_EXTERNAL">External</sys:String>
-    <sys:String x:Key="L_CLEARCUSTOMLOCKWALL">Clear custom lockscreen wallpaper</sys:String>
-    <sys:String x:Key="L_INVALIDCLIENT">Invalid Client</sys:String>
+    <sys:String x:Key="L_ANIDBCLIENTINSTRUCTIONS" xml:space="preserve">If you don't have an AniDB client please create one following these instructions otherwise ignore this message.&#10; - Go to "https://anidb.net/software/add" and switch to add new project tab.&#10; - Go to your created project, click add new version and choose a version number.&#10; - Fill in the credentials(project name and version) in AniLife.</sys:String>
+    <sys:String x:Key="L_INPUTBOX_REQUIRED_WARNING">Elements marked with red asterisk "*" are required.</sys:String>
 </ResourceDictionary>

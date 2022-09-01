@@ -181,7 +181,8 @@
     <sys:String x:Key="L_LOCKSCREEN">شاشة القفل</sys:String>
     <sys:String x:Key="L_VIEW">عرض</sys:String>
     <sys:String x:Key="L_INIT_NOINTERNET">الاتصال بالإنترنت غير متوفر ، هل تريد تشغيل الإعداد دون اتصال؟</sys:String>
-    <sys:String x:Key="L_EXTERNAL">خارجي</sys:String>
-    <sys:String x:Key ="L_CLEARCUSTOMLOCKWALL">مسح خلفية شاشة القفل المخصصة</sys:String>
-    <sys:String x:Key ="L_INVALIDCLIENT">عميل غير صالح</sys:String>
+    <sys:String x:Key="L_ANIDBCLIENTINSTRUCTIONS" xml:space="preserve">إذا لم يكن لديك عميل AniDB ، فيرجى إنشاء واحد باتباع هذه الإرشادات وإلا تجاهل هذه الرسالة. &#10; - انتقل إلى "https://anidb.net/software/add" وقم بالتبديل لإضافة علامة تبويب مشروع جديد. &#10; - انتقل إلى المشروع الذي قمت بإنشائه ، وانقر فوق إضافة إصدار جديد واختر رقم الإصدار. &#10; - املأ بيانات الاعتماد (اسم المشروع وإصداره) في AniLife.</sys:String>
+    <sys:String x:Key="L_INPUTBOX_REQUIRED_WARNING">العناصر المميزة بعلامة النجمة الحمراء "*" مطلوبة.</sys:String>
+    <sys:String x:Key="L_CREADENTIALSFILL">الرجاء إدخال بيانات الاعتماد الخاصة بك</sys:String>
+    <sys:String x:Key="L_EXTERNALPLAYER">مشغل خارجي</sys:String>
 </ResourceDictionary>

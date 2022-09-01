@@ -181,7 +181,8 @@
     <sys:String x:Key="L_LOCKSCREEN">Écran de verrouillage</sys:String>
     <sys:String x:Key="L_VIEW">Affichage</sys:String>
     <sys:String x:Key="L_INIT_NOINTERNET">La connexion Internet n'est pas disponible, voulez-vous exécuter la configuration hors ligne ?</sys:String>
-    <sys:String x:Key="L_EXTERNAL">Externe</sys:String>
-    <sys:String x:Key="L_CLEARCUSTOMLOCKWALL">Effacer le fond d'écran personnalisé de l'écran de verrouillage</sys:String>
-    <sys:String x:Key="L_INVALIDCLIENT">Client non valide</sys:String>
+    <sys:String x:Key="L_ANIDBCLIENTINSTRUCTIONS" xml:space="preserve">Si vous n'avez pas de client AniDB, créez-en un en suivant ces instructions, sinon ignorez ce message.&#10; - Accédez à "https://anidb.net/software/add" et basculez pour ajouter un nouvel onglet de projet.&#10; - Accédez à votre projet créé, cliquez sur ajouter une nouvelle version et choisissez un numéro de version.&#10; - Remplissez les informations d'identification (nom du projet et version) dans AniLife.</sys:String>
+    <sys:String x:Key="L_INPUTBOX_REQUIRED_WARNING">Les éléments marqués d'un astérisque rouge "*" sont obligatoires.</sys:String>
+    <sys:String x:Key="L_CREADENTIALSFILL">Veuillez saisir vos identifiants</sys:String>
+    <sys:String x:Key="L_EXTERNALPLAYER">Lecteur externe</sys:String>
 </ResourceDictionary>
