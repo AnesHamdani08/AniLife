@@ -62,21 +62,18 @@
     End Sub
 
     Private Sub Episode_Resources_Local_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Episode_Resources_Local.MouseLeftButtonDown
-        If e.ClickCount >= 2 Then
-            If IsFileExists Then MainWindow.LoadingStateHelper.OpenVideo(FilePath)
+        If TypeOf Application.Current.MainWindow Is MainWindow Then
+            With CType(Application.Current.MainWindow, MainWindow)
+                .Watch_MediaElement.Source = New Uri(FilePath, UriKind.Absolute)
+                .Watch_MediaElement.Play()
+                .Watch_Play.Visibility = Visibility.Collapsed
+                .Watch_Pause.Visibility = Visibility.Visible
+                .MainTabControl.SelectedIndex = .MainTabControl.Items.Count - 1
+            End With
         End If
-    End Sub
-    Private Sub OpenWith(ByVal filePath As String)
-        Dim psi As New ProcessStartInfo("rundll32.exe")
-        With psi
-            .Arguments = String.Format("shell32.dll,OpenAs_RunDLL {0}", filePath)
-        End With
-        Process.Start(psi)
     End Sub
 
-    Private Sub Episode_Resources_Local_OpenWith_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles Episode_Resources_Local_OpenWith.MouseLeftButtonDown
-        If e.ClickCount >= 2 Then
-            If IsFileExists Then OpenWith(FilePath)
-        End If
+    Private Sub Episode_Resources_Local_ExternalPlayer_Click(sender As Object, e As RoutedEventArgs) Handles Episode_Resources_Local_ExternalPlayer.Click
+        If IsFileExists Then Process.Start(FilePath)
     End Sub
 End Class

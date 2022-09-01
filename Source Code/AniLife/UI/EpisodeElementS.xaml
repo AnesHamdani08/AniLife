@@ -26,8 +26,13 @@
                 </Border>
             </StackPanel>
             <StackPanel x:Name="Episode_Resources" Orientation="Horizontal" VerticalAlignment="Top" Height="32" Margin="0,32,0,0">
-                <Image x:Name="Episode_Resources_Local" Source="{DynamicResource PLAY}" Height="32" ToolTip="{DynamicResource L_APPNAME}" Margin="0,0,10,0" Visibility="Collapsed"/>
-                <Image x:Name="Episode_Resources_Local_OpenWith" Source="{DynamicResource STREAM}" Height="32" Margin="0,0,10,0" Visibility="Collapsed" ToolTip="{DynamicResource L_EXTERNAL}"/>
+                <Image x:Name="Episode_Resources_Local" Source="{DynamicResource PLAY}" Height="32" ToolTip="{DynamicResource L_LOCALCOLLECTION}" Margin="0,0,10,0" Visibility="Collapsed">
+                    <Image.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="Episode_Resources_Local_ExternalPlayer" Header="{DynamicResource L_EXTERNALPLAYER}"/>
+                        </ContextMenu>
+                    </Image.ContextMenu>
+                </Image>
             </StackPanel>
         </Grid>
         <Grid VerticalAlignment="Bottom" Height="32" Background="{DynamicResource CONTENT}">

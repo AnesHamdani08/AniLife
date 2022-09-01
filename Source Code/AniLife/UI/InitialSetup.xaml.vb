@@ -47,14 +47,13 @@ Public Class InitialSetup
                                     End Sub
         If Not IsOfflineMode Then
             Do While True
-                Dim Client = InputBox(AniResolver.CLIENT, AniResolver.APPNAME)
-                Dim Version = InputBox(AniResolver.VERSION, AniResolver.APPNAME)
-                Dim NVersion As Integer
-                If Integer.TryParse(Version, NVersion) AndAlso Not String.IsNullOrEmpty(Client) Then
+                MessageBox.Show(AniResolver.ANIDBCLIENTINSTRUCTIONS, AniResolver.APPNAME, MessageBoxButton.OK, MessageBoxImage.Information)
+                Dim Result = AdvancedInputBox.AdvancedInputBox.ShowQuick(AniResolver.APPNAME, AniResolver.CREADENTIALSFILL, {New AdvancedInputBox.Controls.TextField(AniResolver.NAME, True), New AdvancedInputBox.Controls.NumberField(AniResolver.VERSION, 0, Double.MaxValue, True)})
+                If Result IsNot Nothing Then
                     Try
-                        If Await AniDB.AniDBClient.SharedFunctions.CheckClient(Client, NVersion) Then
-                            My.Settings.APP_CLIENT = Client
-                            My.Settings.APP_CLIENTVER = Version
+                        If Await AniDB.AniDBClient.SharedFunctions.CheckClient(Result.Values(AniResolver.NAME).Value, Result.Values(AniResolver.VERSION).Value) Then
+                            My.Settings.APP_CLIENT = Result.Values(AniResolver.NAME).Value
+                            My.Settings.APP_CLIENTVER = Result.Values(AniResolver.VERSION).Value
                             My.Settings.Save()
                             Exit Do
                         Else
@@ -63,6 +62,22 @@ Public Class InitialSetup
                     Catch
                     End Try
                 End If
+                'Dim Client = InputBox(AniResolver.CLIENT, AniResolver.APPNAME)
+                'Dim Version = InputBox(AniResolver.VERSION, AniResolver.APPNAME)
+                'Dim NVersion As Integer
+                'If Integer.TryParse(Version, NVersion) AndAlso Not String.IsNullOrEmpty(Client) Then
+                '    Try
+                '        If Await AniDB.AniDBClient.SharedFunctions.CheckClient(Client, NVersion) Then
+                '            My.Settings.APP_CLIENT = Client
+                '            My.Settings.APP_CLIENTVER = Version
+                '            My.Settings.Save()
+                '            Exit Do
+                '        Else
+                '            AniMessage.ShowMessage(AniResolver.APPNAME, AniResolver.ERROR, AniMessage.AniImage.WARNING, {New Button With {.Content = AniResolver.OK}}, True, True)
+                '        End If
+                '    Catch
+                '    End Try
+                'End If
             Loop
         End If
         Main_Start.BeginAnimation(MarginProperty, MAnim)
@@ -95,7 +110,7 @@ Public Class InitialSetup
 
                            Dim MainLibrary As New AniLibrary()
                            Dim MainCache As New AniCache()
-                           Dim MainClient As New AniDB.AniDBClient(My.Settings.APP_CLIENT, My.Settings.APP_CLIENTVER)
+                           Dim MainClient As AniDB.AniDBClient = If(IsOfflineMode, New AniDB.AniDBClient("AniLife", 1), New AniDB.AniDBClient(My.Settings.APP_CLIENT, My.Settings.APP_CLIENTVER))
 
                            MainLibrary = AniLibrary.MakeLibrary()
                            IO.Directory.CreateDirectory(IO.Path.Combine(My.Settings.DATA_LOCATION, "Library"))
