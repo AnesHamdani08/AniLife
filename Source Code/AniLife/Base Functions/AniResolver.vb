@@ -2,7 +2,7 @@
 ''' Provides methods to get or set built-in resources
 ''' </summary>
 Public Class AniResolver
-    Public Const LinkVersion As String = "0.0.0.1-Beta.4"
+    Public Const LinkVersion As String = "0.0.0.1-Beta.3"
 #Region "Localization"
     Public Shared Property APPNAME As String
         Get
@@ -1388,28 +1388,20 @@ Public Class AniResolver
             Application.Current.Resources("L_INIT_NOINTERNET") = value
         End Set
     End Property
-    Public Shared Property EXTERNAL As String
+    Public Shared Property ANIDBCLIENTINSTRUCTIONS As String
         Get
-            Return Application.Current.Resources("L_EXTERNAL")
+            Return Application.Current.Resources("L_ANIDBCLIENTINSTRUCTIONS")
         End Get
         Set(value As String)
-            Application.Current.Resources("L_EXTERNAL") = value
+            Application.Current.Resources("L_ANIDBCLIENTINSTRUCTIONS") = value
         End Set
     End Property
-    Public Shared Property CLEARCUSTOMLOCKWALL As String
+    Public Shared Property CREADENTIALSFILL As String
         Get
-            Return Application.Current.Resources("L_CLEARCUSTOMLOCKWALL")
+            Return Application.Current.Resources("L_CREADENTIALSFILL")
         End Get
         Set(value As String)
-            Application.Current.Resources("L_CLEARCUSTOMLOCKWALL") = value
-        End Set
-    End Property
-    Public Shared Property INVALIDCLIENT As String
-        Get
-            Return Application.Current.Resources("L_INVALIDCLIENT")
-        End Get
-        Set(value As String)
-            Application.Current.Resources("L_INVALIDCLIENT") = value
+            Application.Current.Resources("L_CREADENTIALSFILL") = value
         End Set
     End Property
 #End Region
