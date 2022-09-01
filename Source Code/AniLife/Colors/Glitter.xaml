@@ -18,6 +18,8 @@
     <SolidColorBrush x:Key="OVERLAYTEXT">#EEEEEE</SolidColorBrush>
     <SolidColorBrush x:Key="TEXT">#EEEEEE</SolidColorBrush>
     <FontFamily x:Key="FONT">Segoe UI Light</FontFamily>
+    <FontFamily x:Key="CLR_INPUTBOX_TEXT_FONT">Segoe UI</FontFamily>
+    <FontFamily x:Key="CLR_INPUTBOX_HEADER_FONT">Segoe UI Light</FontFamily>
     <FontWeight x:Key="FONT_WEIGHT">Regular</FontWeight>
     <sys:String x:Key="BG_PATH">Resources/GlitterTexture.png</sys:String>
     <sys:Boolean x:Key="BG_ISPATH">True</sys:Boolean>

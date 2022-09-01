@@ -18,6 +18,8 @@
     <SolidColorBrush x:Key="OVERLAY_TEXT">#E6E6E6</SolidColorBrush>
     <SolidColorBrush x:Key="TEXT">#E6E6E6</SolidColorBrush>
     <FontFamily x:Key="FONT">Ink Free</FontFamily>
+    <FontFamily x:Key="CLR_INPUTBOX_TEXT_FONT">Segoe UI</FontFamily>
+    <FontFamily x:Key="CLR_INPUTBOX_HEADER_FONT">Segoe UI Light</FontFamily>
     <FontWeight x:Key="FONT_WEIGHT">Regular</FontWeight>
     <sys:String x:Key="BG_PATH">0</sys:String>
     <sys:Boolean x:Key="BG_ISPATH">False</sys:Boolean>
