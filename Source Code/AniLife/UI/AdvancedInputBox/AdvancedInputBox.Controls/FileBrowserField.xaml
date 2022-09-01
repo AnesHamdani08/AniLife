@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="AdvancedInputBox.Controls.FileBrowserField"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AUDX"
+             mc:Ignorable="d" 
+             Height="32" Margin="0">
+    <StackPanel Orientation="Horizontal">
+        <TextBox x:Name="Input_TB" Width="250" Margin="0,0,10,0" FontFamily="{DynamicResource CLR_INPUTBOX_TEXT_FONT}" IsEnabled="False"/>
+        <Button x:Name="Browse_BTN" Margin="0,0,10,0">
+            <Button.Content>
+                <Image Source="{DynamicResource IMG_SEARCH}"/>
+            </Button.Content>
+        </Button>
+        <TextBlock x:Name="Name_TB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,10,0" FontFamily="{DynamicResource CLR_INPUTBOX_TEXT_FONT}"/>
+        <TextBlock x:Name="Required_TB" Text="*" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="0,0,10,0" FontFamily="{DynamicResource CLR_INPUTBOX_TEXT_FONT}" Visibility="Collapsed"/>
+    </StackPanel>
+</UserControl>

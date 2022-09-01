@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="AdvancedInputBox.Controls.CommandButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AniLife"
+             mc:Ignorable="d" 
+             Height="48" Margin="0" Background="#00000000">
+    <UserControl.Resources>
+        <local:StringNullToVisibilityConverter x:Key="StrNullToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,10,0">
+            <Button x:Name="Icon_BTN" hc:IconElement.Geometry="{StaticResource RightGeometry}" Style="{StaticResource ButtonIcon}" Foreground="#000000"/>
+        </Viewbox>
+        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock x:Name="Content_TB" FontFamily="{DynamicResource CLR_INPUTBOX_TEXT_FONT}" Margin="0,0,0,5" Visibility="{Binding Text, ElementName=Content_TB,Converter={StaticResource StrNullToVisibilityConverter}}" FontSize="21.333"/>
+            <TextBlock x:Name="Description_TB" FontFamily="{DynamicResource CLR_INPUTBOX_TEXT_FONT}" Visibility="{Binding Text, ElementName=Description_TB,Converter={StaticResource StrNullToVisibilityConverter}}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <TextBlock x:Name="Name_TB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,10,0" FontFamily="{DynamicResource CLR_INPUTBOX_TEXT_FONT}" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>
