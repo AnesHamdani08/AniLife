@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Committee>
   <Updates>
-    <Update Type="1" Version="0.0.15.4" Changelog="Fixed printer bugs&#10; Fixed printer table header&#10; Added ability to switch image fields printing&#10; New date filters&#10; Added new tab&#10; General bug fixes" DownURL="https://aneshamdani08.github.io/AniLife/Backend/Docs/Committee.exe"/>
+    <Update Type="1" Version="0.0.16.1" Changelog="Added new licensing system&#10; General bug fixes" DownURL="https://aneshamdani08.github.io/AniLife/Backend/Docs/Committee.exe"/>
   </Updates>
 </Committee>
