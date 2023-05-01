@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Committee>
   <Updates>
-    <Update Type="1" Version="0.0.16.1" Changelog="Added new licensing system&#10; General bug fixes" DownURL="https://aneshamdani08.github.io/AniLife/Backend/Docs/Committee.exe"/>
+    <Update Type="1" Version="0.0.16.2" Changelog="Added new licensing system&#10; General bug fixes" DownURL="https://aneshamdani08.github.io/AniLife/Backend/Docs/Committee.exe"/>
   </Updates>
 </Committee>
