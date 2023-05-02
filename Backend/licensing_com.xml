@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Committee>
   <Licenses>
-    <License RegisteredTo="Anes Hamdani" RegisteredBy="Anes Hamdani" RegistrationCode="7721" LicenseKey="040920027721UID723972932" AppVersion="0.0.16.2" EndOfLifeDate="22,05,2023"/>
-    <License RegisteredTo="Hassan Abdulbaqi" RegisteredBy="Anes Hamdani" RegistrationCode="6827" LicenseKey="6D438245C9774" AppVersion="0.0.16.2" EndOfLifeDate="30,5,2023"/>
+    <License RegisteredTo="Anes Hamdani" RegisteredBy="Anes Hamdani" RegistrationCode="7721" LicenseKey="040920027721UID723972932" AppVersion="0.0.16.2" EndOfLifeDate="22,05,2023" IsVersionLocked="False"/>
+    <License RegisteredTo="Hassan Abdulbaqi" RegisteredBy="Anes Hamdani" RegistrationCode="6827" LicenseKey="6D438245C9774" AppVersion="0.0.16.2" EndOfLifeDate="30,5,2023" IsVersionLocked="False"/>
   </Licenses>
 </Committee>
