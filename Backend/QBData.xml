@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QuickBeat>
+    <Messages>
+        <Message type="alert" releasedate="2023-01-01">Test</Message>
+    </Messages>
+    <Featured>
+        <Tracks>
+            <Track title="Q?" artist="Reol" album="The Sixth Sense" genre="J-Pop" duration="123" releasedate="2023-01-01" deezerID="0a1z2e3" mbID="0a1z2e3" fanartID="0a1z2e3">
+                <Categories>
+                    <Category type="global"/>
+                </Categories>
+                <Images>
+                    <Image type="front">xxxxx.xxxx.xxxxx</Image>
+                </Images>
+            </Track>
+        </Tracks>
+        <Artists>
+            <Artist name="Reol" genre="J-Pop" awards="Rising Star" fans="1444" deezerID="123aze" mbID="123aze" fanartID="123aze">
+                <Categories>
+                    <Category type="global"/>
+                </Categories>
+                <Images>
+                    <Image type="front">xxxxx</Image>
+                </Images>
+            </Artist>
+        </Artists>
+        <Albums>
+            <Album title="The Sixth Sense" artist="Reol" genre="J-Pop" releasedate="2023-01-01" trackCount="123" deezerID="123aze" mbID="123aze" fanartID="123aze">
+                <Categories>
+                    <Category type="global"/>
+                </Categories>
+                <Images>
+                    <Image type="front">xxxxxxxx</Image>
+                </Images>
+            </Album>
+        </Albums>
+    </Featured>
+</QuickBeat>
